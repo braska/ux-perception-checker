@@ -27,10 +27,10 @@ class Countdown extends Component {
       this.setState({
         value: 0,
       });
-    });
-    setTimeout(() => {
-      this.props.onComplete();
-    }, this.props.timeout * 1000);
+      setTimeout(() => {
+        this.props.onComplete();
+      }, this.props.timeout * 1000);
+    }, 100);
   }
 
   render() {
