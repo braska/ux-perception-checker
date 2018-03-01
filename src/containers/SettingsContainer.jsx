@@ -12,13 +12,13 @@ class SettingsContainer extends Component {
   handleTimeoutChange = (event) => {
     const value = +event.target.value.replace(/[^0-9]/g, '');
 
-    this.props.setSetting('timeout', +value);
+    this.props.setSetting('timeout', value || undefined);
   };
 
   handleNumberOfDigitsChange = (event) => {
     const value = +event.target.value.replace(/[^0-9]/g, '');
 
-    this.props.setSetting('numberOfDigits', +value);
+    this.props.setSetting('numberOfDigits', value || undefined);
   };
 
   render() {
@@ -33,8 +33,8 @@ class SettingsContainer extends Component {
 }
 
 export default connect(state => ({
-  timeout: state.timeout,
-  numberOfDigits: state.numberOfDigits,
+  timeout: `${state.timeout || ''}`,
+  numberOfDigits: `${state.numberOfDigits || ''}`,
   representation: state.representation,
   italic: state.italic,
   bold: state.bold,
