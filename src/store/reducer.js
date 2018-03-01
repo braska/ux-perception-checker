@@ -20,6 +20,7 @@ const initialState = {
   bold: false,
   underline: false,
   strikethrough: false,
+  denyNextStage: false,
 };
 
 export default function (state = initialState, action) {
@@ -42,6 +43,8 @@ export default function (state = initialState, action) {
       if (action.payload.key === 'strikethrough' && action.payload.value) {
         newState.underline = false;
       }
+
+      newState.denyNextStage = !newState.timeout || !newState.numberOfDigits || newState.numberOfDigits > 9
 
       return newState;
     }

@@ -14,7 +14,7 @@ const Message = styled.p`
 
 const StartScreen = ({
   start,
-  disableButton,
+  denyNextStage,
 }) => (
   <Fragment>
     <Title>Тест на восприятие</Title>
@@ -24,13 +24,13 @@ const StartScreen = ({
       После Вам будет необходимо указать, какие цифры были в наборе.
     </Message>
     <SettingsContainer />
-    <Button onClick={start} disabled={disableButton}>Начать испытание</Button>
+    <Button onClick={start} disabled={denyNextStage}>Начать испытание</Button>
   </Fragment>
 );
 
 StartScreen.propTypes = {
   start: PropTypes.func.isRequired,
-  disableButton: PropTypes.bool.isRequired,
+  denyNextStage: PropTypes.bool.isRequired,
 };
 
 export default StartScreen;
