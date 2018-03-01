@@ -85,7 +85,7 @@ const VerificationScreen = ({
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(digit => (
         <Box
           key={digit}
-          onClick={() => toggleDigit(digit)}
+          onClick={() => isResultsShown || toggleDigit(digit)}
           selected={selectedDigits.includes(digit)}
           correct={digits.includes(digit)}
           isResultsShown={isResultsShown}
