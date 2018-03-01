@@ -1,4 +1,10 @@
-import {GENERATE_DIGITS, GO_TO_NEXT_STAGE, SET_SETTING} from './actions';
+import {
+  GENERATE_DIGITS,
+  GO_TO_NEXT_STAGE,
+  SET_SETTING,
+  TOGGLE_DIGIT,
+  SHOW_RESULTS,
+} from './actions';
 
 const generateUniqRandomDigit = (alreadyAvailableDigits) => {
   const randomDigit = Math.floor(Math.random() * 10);
@@ -21,12 +27,14 @@ const initialState = {
   underline: false,
   strikethrough: false,
   denyNextStage: false,
+  selectedDigits: [],
+  isResultsShown: false,
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case GO_TO_NEXT_STAGE:
-      return state.stage === 3 ? { ...initialState } : {
+      return state.stage === 2 ? { ...initialState } : {
         ...state,
         stage: state.stage + 1,
       };
@@ -60,6 +68,25 @@ export default function (state = initialState, action) {
         digits,
       }
     }
+    case TOGGLE_DIGIT:
+      return {
+        ...state,
+        selectedDigits: (() => {
+          const index = state.selectedDigits.indexOf(action.payload.digit);
+          if (index === -1) {
+            return [...state.selectedDigits, action.payload.digit];
+          }
+
+          const newSelectedDigits = [...state.selectedDigits];
+          newSelectedDigits.splice(index, 1);
+          return newSelectedDigits;
+        })()
+      };
+    case SHOW_RESULTS:
+      return {
+        ...state,
+        isResultsShown: true,
+      };
     default:
       return state;
   }
