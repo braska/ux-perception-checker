@@ -19,7 +19,7 @@ const generateUniqRandomDigit = (alreadyAvailableDigits) => {
 const initialState = {
   stage: 0,
   timeout: 5,
-  numberOfDigits: 9,
+  numberOfDigits: 7,
   digits: [],
   representation: false,
   italic: false,

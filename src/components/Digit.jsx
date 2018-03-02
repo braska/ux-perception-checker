@@ -6,6 +6,7 @@ const Wrapper = styled(({ italic, bold, underline, strikethrough, ...rest }) => 
   font-style: ${({ italic }) => (italic ? 'italic' : 'normal')};
   font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
   text-decoration: ${({ underline, strikethrough }) => (underline ? 'underline' : (strikethrough ? 'line-through' : 'none'))};
+  font-size: 30px;
 `;
 
 const Digit = ({
@@ -24,7 +25,7 @@ const Digit = ({
   >
     {
       representation
-      ? '❤'.repeat(value)
+      ? '❤'.repeat(value || 10)
       : value
     }
   </Wrapper>
